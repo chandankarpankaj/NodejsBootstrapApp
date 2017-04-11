@@ -17,7 +17,7 @@ function newQuoteCallback(req, res){
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
       method: "GET",
       headers: {
-        'X-Mashape-Key': process.env.MASHAPE-KEY,
+        'X-Mashape-Key': process.env.MASHAPE_KEY,
         'Content-Type' : 'application/x-www-form-urlencoded',
         'Accept' : 'application/json'
       }
