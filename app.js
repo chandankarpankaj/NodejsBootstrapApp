@@ -8,11 +8,12 @@ var exphbrs = require('express-handlebars');
 var http = require('http');
 var winston = require('winston');
 
-var customer = require('./routes/customer');
 var page1 = require('./routes/page1');
 var page2 = require('./routes/page2');
-var flagChecks = require('./config/checkFlags.js');
+var flagChecks = require('./config/checkFlags');
 var form = require('./routes/form');
+var customer = require('./routes/customer');
+var quote = require('./routes/quote');
 
 var app = express();
 
@@ -40,7 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/modules', express.static(__dirname + '/node_modules/'));
 
 app.use('/', page1);
-app.use('/customer', customer);
 app.use('/page1', page1);
 app.use('/page2', page2);
 
@@ -65,7 +65,8 @@ app.use('/page3', function(req, res, next){
 
 //req res handling
 app.use('/form', form);
-
+app.use('/customer', customer);
+app.use('/quote', quote);
 
 // TODO this will require in production deployment
 // catch 404 and forward to error handler
