@@ -31,6 +31,8 @@ function getNewsSourcesData(req, res){
       var newsSources = JSON.stringify(body);
       // winston.info('News sources: ' + newsSources);
       res.send(newsSources);
+    } else {
+      winston.error(response);
     }
   };
   request.get(options, fetchNewsSourcesCallback);
@@ -41,7 +43,7 @@ function getNewsArticlesData(req, res){
   var source = req.params.source;
   winston.info('News source: ' + source);
   var key = req.app.get('NEWS_API_KEY');
-  var articlesUri = "https://newsapi.org/v1/articles?source="+source+"&sortBy=latest&apiKey="+key;
+  var articlesUri = "https://newsapi.org/v1/articles?source="+source+"&apiKey="+key;
   winston.info('News url: ' + articlesUri);
 
   //fetch news articles here
@@ -55,8 +57,10 @@ function getNewsArticlesData(req, res){
   function fetchNewsArticlesCallback(error, response, body){
     if(!error && response.statusCode == 200) {
       var newsArticles = JSON.stringify(body);
-      // winston.info('News articles: ' + newsArticles);
+      winston.info('News articles: ' + newsArticles);
       res.send(newsArticles);
+    } else {
+      winston.error(response);
     }
   };
   request.get(options, fetchNewsArticlesCallback);
