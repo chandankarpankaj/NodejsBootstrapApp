@@ -8,7 +8,10 @@ router.post('/new', newQuoteCallback);
 
 function getCallback(req, res){
   res.render('quote', {
-    title: 'Quote'
+    title: 'Quote',
+    header: 'Good thoughts by great people',
+    author: req.app.get('author'),
+    authorLink: req.app.get('authorLink')
   })
 }
 

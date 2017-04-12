@@ -6,14 +6,19 @@ router.get('/', function(req, res){
   //api call
   //setting data
   res.render('page1',{
-    title: 'Page1'
+    title: 'Page1',
+    header: 'This is page 1',
+    author: req.app.get('author'),
+    authorLink: req.app.get('authorLink')
   })
 });
 
 router.get('/user', function(req, res){
   res.render('page1',{
-    title: 'UserInfo',
-    header: 'User Information1'
+    title: 'User',
+    header: 'User',
+    author: req.app.get('author'),
+    authorLink: req.app.get('authorLink')
   })
 })
 
@@ -22,8 +27,9 @@ router.get('/user/data/:userName', function(req, res){
   var userName = req.params.userName;
   res.render('page1',{
     title: 'UserInfo',
-    header: 'User Information2 : ' + userName,
-    author: req.app.get('author')
+    header: 'User Information : ' + userName,
+    author: req.app.get('author'),
+    authorLink: req.app.get('authorLink')
   })
 })
 
@@ -34,14 +40,18 @@ router.get('/user/data', function(req, res){
   if(userId == undefined || userName == undefined){
     res.render('error',{
       title: 'ErrorPage',
-      header: 'Error Information3',
+      header: 'Error Information',
+      author: req.app.get('author'),
+      authorLink: req.app.get('authorLink'),
       errorMsg: 'Required query parameters userId and userName'
     })
     return;
   }
   res.render('page1', {
-    title: 'UserInfo',
-    header: 'User Information4',
+    title: 'UserData',
+    header: 'User Data',
+    author: req.app.get('author'),
+    authorLink: req.app.get('authorLink'),
     userId: userId,
     userName: userName
   })

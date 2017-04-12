@@ -1,3 +1,3 @@
-exports.checkOtherFlags = function (app) {
+exports.allowOtherPages = function (app) {
   return app.get('allowOtherPages');
 }

@@ -14,6 +14,7 @@ var flagChecks = require('./config/checkFlags');
 var form = require('./routes/form');
 var customer = require('./routes/customer');
 var quote = require('./routes/quote');
+var news = require('./routes/news');
 
 var app = express();
 
@@ -23,8 +24,9 @@ app.engine('handlebars', exphbrs({
 }))
 
 app.set('author', 'Pankaj Chandankar');
+app.set('authorLink', 'https://github.com/chandankarpankaj');
 app.set('port', process.env.PORT || 8000);
-app.set('isPage3', true);
+app.set('allowPage3', true);
 app.set('allowOtherPages', true);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,18 +47,27 @@ app.use('/page1', page1);
 app.use('/page2', page2);
 
 //middleware handling
-app.use('/page3', function(req, res, next){
-  if(!checkPage3()){
+app.use(['/page3','/page4'], function(req, res, next){
+  winston.info('Request path : '+ req.path);
+  if(!allowPage3()){
     res.render('error', {
-      errorMsg: 'checkPage3 flag is not set'
+      title: 'AppError',
+      header: 'Default Error Page',
+      author: req.app.get('author'),
+      authorLink: req.app.get('authorLink'),
+      errorMsg: 'Middleware Warning : allowPage3 flag is not set'
     });
     return;
   }
   next();
 }, function(req, res, next){
-  if(!flagChecks.checkOtherFlags(app)){
+  if(!flagChecks.allowOtherPages(app)){
     res.render('error', {
-      errorMsg: 'checkOtherFlags flag is not set'
+      title: 'AppError',
+      header: 'Default Error Page',
+      author: req.app.get('author'),
+      authorLink: req.app.get('authorLink'),
+      errorMsg: 'allowOtherPages flag is not set'
     });
     return;
   }
@@ -67,6 +78,7 @@ app.use('/page3', function(req, res, next){
 app.use('/form', form);
 app.use('/customer', customer);
 app.use('/quote', quote);
+app.use('/news', news);
 
 // TODO this will require in production deployment
 // catch 404 and forward to error handler
@@ -105,8 +117,8 @@ process.on('uncaughtException', function (err) {
     winston.log('info', '---------------------------------------');
 });
 
-function checkPage3() {
-  return app.get('isPage3');
+function allowPage3() {
+  return app.get('allowPage3');
 }
 
 module.exports = app;
