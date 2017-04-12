@@ -6,7 +6,7 @@ $(document).ready(function(){
       dataType: 'json',
       success: function(res){
         console.log('Response : ' + res);
-        data = JSON.parse(res);
+        var data = JSON.parse(res);
         $('.quote').html(data.quote);
         $('.author').html(data.author);
         $('.category').html(data.category);

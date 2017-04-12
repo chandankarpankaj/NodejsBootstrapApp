@@ -26,6 +26,8 @@ app.engine('handlebars', exphbrs({
 app.set('author', 'Pankaj Chandankar');
 app.set('authorLink', 'https://github.com/chandankarpankaj');
 app.set('port', process.env.PORT || 8000);
+app.set('MASHAPE_KEY', process.env.MASHAPE_KEY || 'testkey');
+app.set('NEWS_API_KEY', process.env.NEWS_API_KEY || 'testkey');
 app.set('allowPage3', true);
 app.set('allowOtherPages', true);
 // view engine setup
