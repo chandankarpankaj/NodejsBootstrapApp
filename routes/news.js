@@ -3,20 +3,48 @@ var router = express.Router();
 var request = require('request');
 var winston = require('winston');
 
-router.get('/', getNewsData);
-router.get('/sources', getNewsSourcesData);
-router.get('/articles/:source', getNewsArticlesData);
-
-function getNewsData(req, res){
-  res.render('news', {
-    title: 'TopNews',
-    header: 'Global Top News',
-    author: req.app.get('author'),
-    authorLink: req.app.get('authorLink')
-  });
-};
+router.get('/', getNewsSourcesData);
+router.get('/sources', getNewsSourcesDataAjax);
+router.get('/articles/:source', getNewsArticlesDataAjax);
 
 function getNewsSourcesData(req, res){
+
+  //fetch news resources here
+  var options = {
+    url: "https://newsapi.org/v1/sources?language=en",
+    method: "GET",
+    headers: {
+      'Accept' : 'application/json'
+    }
+  };
+  function fetchNewsSourcesCallback(error, response, body){
+    if(!error && response.statusCode == 200) {
+      var newsSourceResp = JSON.parse(body);
+      // winston.info('News sources: ' + newsSources);
+      res.render('news', {
+        title: 'TopNews',
+        header: 'Global Top News',
+        author: req.app.get('author'),
+        authorLink: req.app.get('authorLink'),
+        newsSources: newsSourceResp.sources
+      });
+      return;
+    } else {
+      winston.error(response);
+      res.render('error',{
+        title: 'ErrorPage',
+        header: 'Error Information',
+        author: req.app.get('author'),
+        authorLink: req.app.get('authorLink'),
+        errorMsg: 'Error while fetching news sources'
+      })
+      return;
+    }
+  };
+  request.get(options, fetchNewsSourcesCallback);
+};
+
+function getNewsSourcesDataAjax(req, res){
 
   //fetch news resources here
   var options = {
@@ -38,7 +66,7 @@ function getNewsSourcesData(req, res){
   request.get(options, fetchNewsSourcesCallback);
 };
 
-function getNewsArticlesData(req, res){
+function getNewsArticlesDataAjax(req, res){
 
   var source = req.params.source;
   winston.info('News source: ' + source);

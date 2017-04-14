@@ -8,16 +8,21 @@ $(document).ready(function(){
       var data = JSON.parse(res);
       console.log('Response Code: ' + data.status);
       console.log(data.sources);
-      var selectMenuObj = $('#newsSources');
+      var selectMenuObj = $('#newsSourcesAjax');
       $(data.sources).each(function() {
        selectMenuObj.append($("<option>").attr('value',this.id).text(this.name));
       });
     },
     error: function(err){
-      console.log('Error : ' + err);
+      console.log('Error');
+      console.log(err);
     }
   });
 
+  $('#newsSourcesAjax').on('change', function() {
+    console.log(this.value);
+    fetchArticles(this.value);
+  });
   $('#newsSources').on('change', function() {
     console.log(this.value);
     fetchArticles(this.value);
