@@ -14,6 +14,12 @@
   <link rel="stylesheet" href="/stylesheets/newsapi.css">
   <link rel="stylesheet" href="/stylesheets/loginapi.css">
 
+  <script src="/modules/tether/dist/js/tether.min.js"></script>
+  <script src="/modules/jquery/dist/jquery.min.js"></script>
+  <script src="/modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--Pulling Local Scripts -->
+  <script src="/javascripts/main.js"></script>
+
 </head>
 <style>
   #header {
@@ -62,17 +68,25 @@
     <li><a href="/login">Login</a></li>
   </ul>
   <div id="container">
+    <div id="row">
+      {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+      {{/if}}
+      {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+      {{/if}}
+      {{#if errors}}
+        {{# each errors}}
+          <div class="alert alert-danger">{{ this.msg }}</div>
+        {{/each}}
+      {{/if}}
+    </div>
+
     <div id="body">{{{body}}}</div>
     <div id="footer">
       Page Author Name : <a href="{{{authorLink}}}">{{{author}}}<a>
     </div>
   </div>
-
-  <script src="/modules/tether/dist/js/tether.min.js"></script>
-  <script src="/modules/jquery/dist/jquery.min.js"></script>
-  <script src="/modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!--Pulling Local Scripts -->
-  <script src="/javascripts/main.js"></script>
 
 </body>
 </html>

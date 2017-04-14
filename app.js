@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var exphbrs = require('express-handlebars');
 var http = require('http');
 var winston = require('winston');
+var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var page1 = require('./routes/page1');
 var page2 = require('./routes/page2');
@@ -44,6 +47,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //static reference to private folder
 app.use('/modules', express.static(__dirname + '/node_modules/'));
+app.use(passport.initialize());
+app.use(passport.session());
+//connect flash
+app.use(session({secret: 'secret', resave: true, saveUninitialized: true, cookie: { secure: false, maxAge: 60000 }}));
+app.use(flash());
+//Global Variables
+app.use(function(req, res, next) {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
 
 app.use('/', page1);
 app.use('/page1', page1);
