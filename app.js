@@ -15,6 +15,7 @@ var form = require('./routes/form');
 var customer = require('./routes/customer');
 var quote = require('./routes/quote');
 var news = require('./routes/news');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -26,8 +27,8 @@ app.engine('handlebars', exphbrs({
 app.set('author', 'Pankaj Chandankar');
 app.set('authorLink', 'https://github.com/chandankarpankaj');
 app.set('port', process.env.PORT || 8000);
-app.set('MASHAPE_KEY', process.env.MASHAPE_KEY || 'testkey');
-app.set('NEWS_API_KEY', process.env.NEWS_API_KEY || 'testkey');
+app.set('MASHAPE_KEY', process.env.MASHAPE_KEY || 'test');
+app.set('NEWS_API_KEY', process.env.NEWS_API_KEY || 'test');
 app.set('allowPage3', true);
 app.set('allowOtherPages', true);
 // view engine setup
@@ -47,7 +48,6 @@ app.use('/modules', express.static(__dirname + '/node_modules/'));
 app.use('/', page1);
 app.use('/page1', page1);
 app.use('/page2', page2);
-
 //middleware handling
 app.use(['/page3','/page4'], function(req, res, next){
   winston.info('Request path : '+ req.path);
@@ -75,12 +75,12 @@ app.use(['/page3','/page4'], function(req, res, next){
   }
   next();
 }, page2);
-
 //req res handling
 app.use('/form', form);
 app.use('/customer', customer);
 app.use('/quote', quote);
 app.use('/news', news);
+app.use('/login', login);
 
 // TODO this will require in production deployment
 // catch 404 and forward to error handler

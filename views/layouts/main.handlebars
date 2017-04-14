@@ -7,48 +7,72 @@
 
   <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/modules/tether/dist/css/tether.min.css">
+  <!--Pulling Awesome Font -->
+  <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+  <!--Pulling Local Styles -->
   <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="stylesheet" href="/stylesheets/3-col-portfolio.css">
-  <script src="/modules/tether/dist/js/tether.min.js"></script>
-  <script src="/modules/jquery/dist/jquery.min.js"></script>
-  <script src="/modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="/javascripts/main.js"></script>
+  <link rel="stylesheet" href="/stylesheets/newsapi.css">
+  <link rel="stylesheet" href="/stylesheets/loginapi.css">
+
 </head>
-  <style>
-        html,
-        body {
-           margin:0;
-           padding:0;
-           height:100%;
-        }
-        #container {
-           min-height:100%;
-           position:relative;
-        }
-        #header {
-           background:#ff0;
-           padding:10px;
-        }
-        #body {
-           padding:10px;
-           padding-bottom:60px;   /* Height of the footer */
-        }
-        #footer {
-           position:absolute;
-           text-align: right;
-           bottom:0;
-           width:100%;
-           height:30px;   /* Height of the footer */
-           background:rgba(153, 204, 97, 0.98);
-        }
-    </style>
+<style>
+  #header {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+  }
+  #header li {
+      float: left;
+  }
+  #header li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+  #header li a:hover:not(.active) {
+      background-color: #111;
+  }
+  #header .active {
+      background-color: #4CAF50;
+  }
+  #footer {
+     position:absolute;
+     text-align: right;
+     bottom:0;
+     width:100%;
+     height:30px;   /* Height of the footer */
+     background:rgba(153, 204, 97, 0.98);
+  }
+</style>
+
 <body>
+  <ul id="header">
+    <li><a class="active" href="/quote">Home</a></li>
+    <li><a href="/page1">Page1</a></li>
+    <li><a href="/page2">Page2</a></li>
+    <li><a href="/page3">Page3</a></li>
+    <li><a href="/form">Form</a></li>
+    <li><a href="/customer">Customer</a></li>
+    <li><a href="/quote">Quote</a></li>
+    <li><a href="/news">News</a></li>
+    <li><a href="/login">Login</a></li>
+  </ul>
   <div id="container">
-    <div id="header">{{{header}}}</div>
     <div id="body">{{{body}}}</div>
     <div id="footer">
       Page Author Name : <a href="{{{authorLink}}}">{{{author}}}<a>
     </div>
   </div>
+
+  <script src="/modules/tether/dist/js/tether.min.js"></script>
+  <script src="/modules/jquery/dist/jquery.min.js"></script>
+  <script src="/modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--Pulling Local Scripts -->
+  <script src="/javascripts/main.js"></script>
+
 </body>
 </html>

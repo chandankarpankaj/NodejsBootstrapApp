@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var request = require('request');
 var winston = require('winston');
+var request = require('request');
 
 router.get('/', getNewsSourcesData);
 router.get('/sources', getNewsSourcesDataAjax);
