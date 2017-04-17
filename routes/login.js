@@ -21,18 +21,19 @@ function myHomePage(req, res){
   var password = req.body.password;
   winston.info('Validated user: ' + username);
   winston.info('Validated password: ' + password);
-  req.flash('success_msg','Welcome '+username+'!');
   res.redirect('/news');
 };
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
+passport.use(new LocalStrategy({
+    passReqToCallback: true // don't forget this
+  },
+  function(req, username, password, done) {
     var dbUser = 'pankaj';
     var dbPass = 'admin@123';
     if(dbUser == username && dbPass == password){
-      return done(null, username);
+      return done(null, username, req.flash('success_msg','Welcome '+username+'!'));
     } else {
-      return done(null, false);
+      return done(null, false, req.flash('error_msg','Invalid username or password.'));
     }
   }
 ));
