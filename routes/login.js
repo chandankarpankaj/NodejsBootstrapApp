@@ -9,8 +9,8 @@ router.post('/', passport.authenticate('local', { failureRedirect: '/login', fai
 
 function getLoginPage(req, res){
   res.render('login',{
-    title: 'TopNews',
-    header: 'Global Top News',
+    title: 'Login',
+    header: 'User Login',
     author: req.app.get('author'),
     authorLink: req.app.get('authorLink')
   });
@@ -21,6 +21,7 @@ function myHomePage(req, res){
   var password = req.body.password;
   winston.info('Validated user: ' + username);
   winston.info('Validated password: ' + password);
+  //TODO req.login require here
   res.redirect('/news');
 };
 

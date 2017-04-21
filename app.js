@@ -10,6 +10,7 @@ var winston = require('winston');
 var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
+var handlebars = require('handlebars');
 
 var page1 = require('./routes/page1');
 var page2 = require('./routes/page2');
@@ -19,6 +20,7 @@ var customer = require('./routes/customer');
 var quote = require('./routes/quote');
 var news = require('./routes/news');
 var login = require('./routes/login');
+var patient = require('./routes/patient');
 
 var app = express();
 
@@ -96,6 +98,7 @@ app.use('/customer', customer);
 app.use('/quote', quote);
 app.use('/news', news);
 app.use('/login', login);
+app.use('/patient', patient);
 
 // TODO this will require in production deployment
 // catch 404 and forward to error handler

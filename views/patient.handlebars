@@ -1,0 +1,194 @@
+<style>
+  .searchable-container{margin:20px 0 0 0}
+  .searchable-container label.btn-default.active{background-color:#007ba7;color:#FFF}
+  .searchable-container label.btn-default{width:90%;border:1px solid #efefef;margin:5px; box-shadow:5px 8px 8px 0 #ccc;}
+  .searchable-container label .bizcontent{width:100%;}
+  .searchable-container .btn-group{width:90%}
+  .searchable-container .btn span.glyphicon{
+      opacity: 0;
+  }
+  .searchable-container .btn.active span.glyphicon {
+      opacity: 1;
+  }
+  .searchable-container div {float:left;}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+            <p class="lead">More complex content example:</p>
+            <div id="tab" class="btn-group" data-toggle="buttons-radio">
+              <a href="#byTimeSlot" class="btn btn-large btn-info" data-toggle="tab">By Time Slot</a>
+              <a href="#byFequency" class="btn btn-large btn-info"  data-toggle="tab">By Frequency</a>
+            </div>
+
+            <div class="tab-content">
+              <div class="tab-pane" id="byTimeSlot">
+              <form method="post" action="/patient">
+                <div class="row">
+                  <div class="form-group">
+                      <div class="searchable-container">
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="BB">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>Before Breakfast</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="BL">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>Before Lunch</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="BD">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>Before Dinner</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="BS">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>Before Supper</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <br>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="AB">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>After Breakfast</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="AL">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>After Lunch</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="AD">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>After Dinner</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                              <div class="info-block block-info clearfix">
+                                  <div class="square-box pull-left">
+                                      <span class="glyphicon glyphicon-tags glyphicon-lg"></span>
+                                  </div>
+                                  <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                                      <label class="btn btn-default">
+                                          <div class="bizcontent">
+                                              <input type="checkbox" name="timeslot[]" autocomplete="off" value="AS">
+                                              <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
+                                              <h5>After Supper</h5>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                <input type="hidden" name="scheduleType" value="BY_TIMESLOT"></input>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
+              </form>
+              </div>
+              <div class="tab-pane" id="byFequency">
+                    <br>
+                <p class="lead">By Frequency</p>
+                <form class="well span8" method="post" action="/patient">
+                  <div class="row">
+                    <div class="col-md-3">
+                        <input type="number" class="form-control bfh-number" data-min="1" data-max="10" name="times">
+                    </div>
+                    <div class="col-md-3">
+                        time a
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control selectpicker" name="frequency">
+                          <option value="D">Day(s)</option>
+                          <option value="W">Week(s)</option>
+                          <option value="M">Month(s)</option>
+                        </select>
+                      </div>
+                      <br>
+                      <input type="hidden" name="scheduleType" value="BY_FREQUENCY"></input>
+                      <button type="submit" class="btn btn-primary pull-right">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+	</div>
+</div>

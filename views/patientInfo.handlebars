@@ -1,0 +1,24 @@
+<br><br>
+<div class="container-fluid well span6">
+	<div class="row-fluid">
+        <div class="span2" >
+		    <img src="https://i.stack.imgur.com/YNwUV.jpg?s=48&g=1" class="img-circle">
+        </div>
+
+        <div class="span8">
+            <h3>Hello User</h3>
+            {{#if scheduleTypeTime}}
+            <h6>Schedule Type: {{scheduleTypeTime}}</h6>
+            <h6>Timeslot:
+              {{#each timeslot}}
+                {{this}}
+              {{/each}}
+            </h6>
+            {{/if}}
+            {{#if scheduleTypeFreq}}
+            <h6>Schedule Type: {{scheduleTypeFreq}}</h6>
+            <h6>{{times}} times a {{frequency}}</h6>
+            {{/if}}
+        </div>
+</div>
+</div>
